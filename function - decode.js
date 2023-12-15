@@ -14,17 +14,9 @@
 import _0x1fc560 from '../database/dbpromise.js';
 import _0x27d4f6 from 'node-fetch';
 import _0x2a27f7 from 'jsonwebtoken';
-const {
-    sign
-} = _0x2a27f7;
 import _0x509b28 from 'fs';
-import {
-    OpenAIApi,
-    Configuration
-} from 'openai';
-import _0x4f7f38, {
-    resolve
-} from 'path';
+import OpenAI from 'openai';
+import _0x4f7f38 from 'path';
 import _0x4bbb92 from 'nodemailer';
 import _0x140b8e from 'moment';
 import _0x1007c6 from 'officeparser';
@@ -36,6 +28,9 @@ import _0x190e5b from 'mysql';
 import {
     encodingForModel
 } from 'js-tiktoken';
+const {
+    sign
+} = _0x2a27f7;
 function returnTokenTxt2Img(_0x1804e9) {
     const _0x1a1adc = _0x1883;
     let _0x86b9af = 0x6;
@@ -83,10 +78,10 @@ function splitIntoChunksLicenseCode(_0x62136, _0x4a47fc, _0x3aa67c = 0x1f4) {
 }
 async function refindReply(_0x31f8cb, _0x25cecb, _0x27dbcf) {
     const _0x493619 = _0x1883,
-        _0x398e3e = new Configuration({
+        
+        _0x2c68a4 = new OpenAI({
             'apiKey': _0x31f8cb
         }),
-        _0x2c68a4 = new OpenAIApi(_0x398e3e),
         _0x139dcd = [{
             'role': _0x493619(0x1ab),
             'content': _0x493619(0x1f7) + _0x25cecb
@@ -103,10 +98,10 @@ async function refindReply(_0x31f8cb, _0x25cecb, _0x27dbcf) {
 }
 async function callOpenAIApi(_0x3cfea4, _0x419017, _0x9b5973, _0x4f3c85, _0x1be621, _0x4f8cb2) {
     const _0xcbe021 = _0x1883,
-        _0x349c40 = new Configuration({
+        
+        _0x3cb80a = new OpenAI({
             'apiKey': _0x419017
         }),
-        _0x3cb80a = new OpenAIApi(_0x349c40),
         _0x41c32a = [{
             'role': _0xcbe021(0x224),
             'content': _0xcbe021(0x18a) + _0x1be621 + '\"'
@@ -426,12 +421,12 @@ function returnPost(_0x44c305, _0x68e52e, _0xe5f296) {
         try {
             const _0x4cdacb = await _0x1fc560(_0xf4a7db(0x1ae), []),
                 _0x55555e = _0x4cdacb[0x0][_0xf4a7db(0x1a0)],
-                _0x3e68dc = new Configuration({
+                ,
+                _0x427dbf = _0xf4a7db(0x183) + _0xe5f296 + _0xf4a7db(0x1bb) + _0x44c305 + _0xf4a7db(0x1e2) + _0x68e52e + _0xf4a7db(0x227),
+                _0x4b201b = new OpenAI({
                     'apiKey': _0x55555e,
                     'organization': 'org-xxxx'
                 }),
-                _0x427dbf = _0xf4a7db(0x183) + _0xe5f296 + _0xf4a7db(0x1bb) + _0x44c305 + _0xf4a7db(0x1e2) + _0x68e52e + _0xf4a7db(0x227),
-                _0x4b201b = new OpenAIApi(_0x3e68dc),
                 _0x4d92b3 = await _0x4b201b[_0xf4a7db(0x1cc)]({
                     'model': process[_0xf4a7db(0x214)][_0xf4a7db(0x1d5)],
                     'messages': [{
@@ -544,10 +539,10 @@ function openAiImage(_0x3ad61e, _0x34c682, _0x2986d8) {
         const _0x1cb2e0 = _0x1883;
         try {
             const _0x465c48 = await _0x1fc560(_0x1cb2e0(0x1ae), []),
-                _0x323100 = new Configuration({
+                ,
+                _0x1df2d9 = new OpenAI({
                     'apiKey': _0x465c48[0x0][_0x1cb2e0(0x1a0)]
                 }),
-                _0x1df2d9 = new OpenAIApi(_0x323100),
                 _0x3ce713 = await _0x1df2d9[_0x1cb2e0(0x1cb)]({
                     'prompt': _0x3ad61e,
                     'n': parseInt(_0x2986d8) || 0x1,
@@ -679,10 +674,10 @@ function openAiText(_0x4fcee3, _0x257e26) {
             }), await pushObjectToArrayAndDeleteOld(_0x4fcee3, _0x4458e5);
             const _0x36c39b = await _0x1fc560(_0x5f0ab1(0x1ae), []),
                 _0x14ec29 = _0x36c39b[0x0]['openai_keys'],
-                _0x178788 = new Configuration({
+                ,
+                _0x6e271d = new OpenAI({
                     'apiKey': _0x14ec29
                 }),
-                _0x6e271d = new OpenAIApi(_0x178788),
                 _0x13f88b = await readJsonFile(_0x4fcee3);
             console['log']({
                 'data': _0x13f88b
